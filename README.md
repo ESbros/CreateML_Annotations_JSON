@@ -151,4 +151,4 @@ Coordinates dictionary
 ![res](https://user-images.githubusercontent.com/41980160/60400071-7d0b2d80-9b34-11e9-825d-0fecb61c483b.png)
 
 
-Thanks for reading! :D
+That's all! :D
