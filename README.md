@@ -10,7 +10,7 @@ CreateML requires a list of dictionaries with information about the selected bou
 
 ## Code Description
 
-The following code shows how to draw bounding boxes using matplotlib library. Functions 'line_select_callback', 'toggle_selector', 'onkeypress' where found on the matplotlib documentation. It allow us to iterate over the images of a folder, draw bounding boxes and get the corresponding top left and bottom right coordinates of the drawn bounding box.
+The following code shows how to draw bounding boxes using matplotlib library. It iterates over the images of a folder and draws bounding boxes to get the center coodinates, heitgh and width of the bounding box.
 
 Detailed description on: https://medium.com/@eriksols/generate-annotations-json-format-for-createml-apple-with-python-90fc848cd439?postPublishedType=repub
 
