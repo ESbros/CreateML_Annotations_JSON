@@ -27,7 +27,7 @@ def onkeypress(event):
     global img
     if event.key == 'q':
         generate_json(tl_list, br_list)
-        tl_list = []                                                                #empty every list
+        tl_list = []                                                                #empty all lists
         br_list = []
         img = None
 
