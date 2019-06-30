@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
     for file_name in file_names:
         image_name = file_name
-        if image_name[0] != '.':                                                        #When copy and page images inside a folder. a '.DS_Store' file is generated, then this file does not must be read
+        if image_name[0] != '.':                                                        #When copy and page images inside a folder a '.DS_Store' file is generated, then this file must not be read
             name_class, sep, tail = image_name.partition('_')
             dir_file = os.path.abspath(os.path.join(image_folder, file_name))
 
