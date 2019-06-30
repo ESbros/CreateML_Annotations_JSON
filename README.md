@@ -18,17 +18,22 @@ import cv2
 import json
 import matplotlib.pyplot as plt
 from matplotlib.widgets import RectangleSelector
+
 image_folder = 'path_to_image_folder'
+
 annotations = []
 tl_list = []
 br_list = []
+
 def line_select_callback(clk, rls):                                                                        
     global tl_list                                                                     
     global br_list                                                                 
     tl_list.append((int(clk.xdata), (int(clk.ydata))))                                
     br_list.append((int(rls.xdata), (int(rls.ydata))))
+    
 def toggle_selector(event):                                                         
     toggle_selector.RS.set_active(True)
+    
 def onkeypress(event):
     global tl_list
     global br_list
@@ -47,20 +52,28 @@ def generate_json(tl_list, br_list):
     image_dict = {"image":'', "annotations":[]}
     label_dict = {"label":'', "coordinates":{}}
     coord_dict = {"x":int, "y":int, "width":int, "heigth":int}
+    
     center_x = int(abs((tl_list[0][0] - br_list[0][0])/2)) +     
     int(tl_list[0][0])
+    
     center_y = int(abs((tl_list[0][1] - br_list[0][1])/2)) +  
     int(tl_list[0][1])
+    
     width = int(abs(tl_list[0][0] - br_list[0][0]))
     height = int(abs(tl_list[0][1] - br_list[0][1]))
+    
     coord_dict['x'] = center_x
     coord_dict['y'] = center_y
+    
     coord_dict['width'] = width
     coord_dict['heigth'] = heigth
+    
     label_dict['label'] = name_class
     label_dict['coordinates'] = coord_dict
+    
     image_dict['image'] = image_name
     image_dict['annotations'] = label_dict
+    
     annotations.append(image_dict)
 ```
 
@@ -71,16 +84,18 @@ if __name__ == '__main__':
    image_name = ''
    name_class = ''
    file_names = os.listdir(image_folder)
+   
    for file_name in file_names:
        image_name = file_name
        if image_name[0] != '.':     
           name_class, sep, tail = image_name.partition('_')
-          dir_file = os.path.abspath(os.path.join(image_folder,    
-                                                    file_name))
+          dir_file = os.path.abspath(os.path.join(image_folder, file_name))
+          
           fig, ax = plt.subplots(1)      
           image = cv2.imread(dir_file)     
           image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
           ax.imshow(image)
+          
           toggle_selector.RS = RectangleSelector(
                  ax, line_select_callback,
                  drawtype='box', useblit=True,
@@ -91,6 +106,7 @@ if __name__ == '__main__':
           bbox = plt.connect('key_press_event', toggle_selector) 
           key = plt.connect('key_press_event', onkeypress)
           plt.show()
+          
    json_file = json.dumps(annotations)
    with open('path_save_directory/annotations.json', 'w') as f:
    f.write(json_file)
@@ -131,5 +147,8 @@ List length (number of contained dictionaries)
 Image dictionary
 Label dictionary
 Coordinates dictionary
+
+![res](https://user-images.githubusercontent.com/41980160/60400071-7d0b2d80-9b34-11e9-825d-0fecb61c483b.png)
+
 
 Thanks for reading! :D
