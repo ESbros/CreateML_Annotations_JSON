@@ -4,7 +4,7 @@ import json
 import matplotlib.pyplot as plt
 from matplotlib.widgets import RectangleSelector                                    # global constants
 
-image_folder = '/Users/edsg/Desktop/DataSetML/Data_Sets/Data_Set_TVT/Test_Animals'  #where images are
+image_folder = 'path_to_image_folder'  #where images are
 
 annotations = [] 
 tl_list = []
@@ -94,5 +94,5 @@ if __name__ == '__main__':
 
 
     json_file = json.dumps(annotations)
-    with open('/Users/edsg/Desktop/annotations.json', 'w') as f:
+    with open('path_to_save_directory/annotations.json', 'w') as f:
         f.write(json_file)
