@@ -52,7 +52,7 @@ def generate_json(tl_list, br_list):
     label_dict['coordinates'] = coord_dict
 
     image_dict['image'] = image_name
-    image_dict['annotations'] = label_dict
+    image_dict['annotations'].append(label_dict) 
 
     annotations.append(image_dict)
 
