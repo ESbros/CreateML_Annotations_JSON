@@ -1,6 +1,6 @@
 import json
 
-filename = '/Users/edsg/Desktop/annotations.json'
+filename = 'path_to/annotations.json'
 
 with open(filename, 'r') as f:
     datastore = json.load(f)
